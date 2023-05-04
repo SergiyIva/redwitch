@@ -1,0 +1,72 @@
+<div class="container pt-3">
+    <h2 class="pb-2 border-bottom">Оставьте свой контакт в форме ниже</h2>
+<form action="/process-contact?form=newcontact" method="post" role="form" >
+    <input type="hidden" name="_csrf" value="{{csrf}}">
+    <div class="mb-3">
+        <label for="inputName1" class="form-label">Ваше имя</label>
+        <input type="text" name="name" class="form-control" id="inputName1" placeholder="Имя" required>
+    </div>
+    <div class="mb-3">
+    <label for="phone" class="form-label">Телефон</label>
+    <div class="input-group has-validation">
+        <span class="input-group-text">+7</span>
+        <input name="phone" type="text" class="form-control" id="phone" maxlength="10" placeholder="999-999-99-99" required>
+        <div id="invalid-phone" class="invalid-feedback">
+            Номер телефона должен состоять из 10 чисел!
+        </div>
+    </div>
+        <div id="emailHelp" class="form-text">Мы не передаем личные данные третьим лицам.</div>
+    </div>
+    <div class="mb-3">
+        <label for="inputEmail1" class="form-label">Ваш email <span class="text-muted">(не обязательно)</span></label>
+        <input type="email" name="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Email">
+        <div id="check" class="form-check hidden">
+            <input name="subscribe" type="checkbox" class="form-check-input" id="same-address">
+            <label class="form-text" for="same-address">Оповещать меня о проводимых акциях и специальных предложениях.</label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="inputEmail1" class="form-label">Комментарий <span class="text-muted">(не обязательно)</span></label>
+        <textarea name="describe" class="form-control" aria-label="With textarea" style="height: 80px;" ></textarea>
+        <div id="emailHelp" class="form-text">Укажите дополнительную информацию тут.</div>
+    </div>
+    <button id="buttonSub" type="submit" class="btn btn-primary disabled">Отправить</button>
+</form>
+</div>
+<script>
+    const emailField = document.getElementById("inputEmail1")
+    const check = document.getElementById("check")
+    emailField.addEventListener("change", (e)=>{
+        if(e.target.value){
+            check.style.display = "block"
+        } else check.style.display = "none"
+    })
+    const phone = document.getElementById("phone")
+    const invalidPhone = document.getElementById("invalid-phone")
+    const button = document.getElementById("buttonSub")
+    const phoneChange = (e) => {
+        const value = e.target.value
+        if (/\D/.test(value) || value.length < 10) {
+            button.classList.add("disabled")
+            invalidPhone.style.display = "block"
+        } else {
+            button.classList.remove("disabled")
+            invalidPhone.style.display = "none"
+        }
+    }
+    const phoneBlur = (e) => {
+        const value = [...e.target.value]
+        if (value.length <10) return
+        value.splice(3, 0, "-")
+        value.splice(7, 0, "-")
+        value.splice(10, 0, "-")
+        e.target.value = value.join("")
+    }
+    const phoneFocus = (e) => {
+        const value = e.target.value
+        e.target.value = value.replace(/-/g, "")
+    }
+    phone.addEventListener("blur", phoneBlur)
+    phone.addEventListener("focus", phoneFocus)
+    phone.addEventListener("change", phoneChange)
+</script>

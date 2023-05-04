@@ -1,0 +1,13 @@
+{
+  "main":[
+    {"href":"/admin/main","title":"Панель управления"},
+    {"href":"/admin/orders","title":"Заказы"},
+    {"href":"/admin/products","title":"Витрина"},
+    {"href":"/admin/send-mail","title":"Рассылка"},
+    {"href":"/admin/promocode","title":"Промокоды"},
+    {"href":"/admin/integrations","title":"Integrations"}],
+  "statistic":[{"href":"/admin/month","title":"Текущий месяц"},
+    {"href":"/admin/quarter","title":"Последние 3 месяца"},
+    {"href":"/admin/year","title":"За год"},
+    {"href":"/admin/all-time","title":"За все время"}]
+}

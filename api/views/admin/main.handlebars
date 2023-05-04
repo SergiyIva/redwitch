@@ -1,0 +1,74 @@
+
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Панель управления</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+<!--                        <button type="button" class="btn btn-sm btn-outline-secondary"></button>-->
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Экспорт</button>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="calendar"></span>
+                        Этот месяц
+                    </button>
+                </div>
+            </div>
+            <main>
+                <h1>Начни управлять уже сейчас</h1>
+                <p class="fs-5 col-md-8">Очень быстро и легко можно настроить данные для данного сайта. На панели управления имеется все необходимое,
+                чтобы разместить информацию, принимать заказы и делать рассылки электронной почты.</p>
+
+                <div class="mb-5">
+                    <a href="admin/add-card/" class="btn btn-primary btn-lg px-4">Добавить на витрину</a>
+                </div>
+
+                <hr class="col-3 col-md-2 mb-5">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Starter projects</h2>
+                        <p>Ready to beyond the starter template? Check out these open source projects that you can quickly duplicate to a new GitHub repository.</p>
+                        <ul class="icon-list">
+                            <li><a href="https://github.com/twbs/bootstrap-npm-starter" rel="noopener" target="_blank">Bootstrap npm starter</a></li>
+                            <li class="text-muted">Bootstrap Parcel starter (coming soon!)</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2>Guides</h2>
+                        <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
+                        <ul class="icon-list">
+                            <li><a href="../getting-started/introduction/">Bootstrap quick start guide</a></li>
+                            <li><a href="../getting-started/webpack/">Bootstrap Webpack guide</a></li>
+                            <li><a href="../getting-started/parcel/">Bootstrap Parcel guide</a></li>
+                            <li><a href="../getting-started/contribute/">Contributing to Bootstrap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+
+            <h2>Последние контакты</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Телефон</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Описание</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each orders}}
+                    <tr>
+                        <td>{{date}}</td>
+                        <td>{{name}}</td>
+                        <td>{{phone}}</td>
+                        <td>{{email}}</td>
+                        <td>{{describe}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>

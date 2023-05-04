@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style/bootstrap.css"/>
+    <link rel="stylesheet" href="/style/style.css"/>
+
+    <title>ДашМонтаж</title>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">ДашМонтаж</h4>
+                        <p class="text-muted">Мы предоставляем услуги видеомонтажа по демократичным ценам и с высоким качеством выполнения работы. В наших проектах используется только передовое программное обеспечение, что позволяет создавать самые впечатляющие видео.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Контакты</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white main-link fade show">Подписаться в Вконтакте</a></li>
+                            <li><a href="#" class="text-white main-link fade show">Мы в Инстаграм</a></li>
+                            <li><a href="/process-contact" class="text-white main-link fade show">Оставить Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <a href="/" class="navbar-brand d-flex align-items-center">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.1em" width="1.1em" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="me-2"><path d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM9 11V5h6v6H9zm6 2v6H9v-6h6zM5 5h2v2H5V5zm0 4h2v2H5V9zm0 4h2v2H5v-2zm0 4h2v2H5v-2zm14.002 2H17v-2h2.002v2zm-.001-4H17v-2h2.001v2zm0-4H17V9h2.001v2zM17 7V5h2v2h-2z"></path></svg>
+                    <strong>ДашМонтаж</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    {{#if flash}}
+        <div id="flash" class="alert alert-dismissible alert-{{flash.type}}">
+            <button id="closeButton" type="button" class="btn-close shadow-none" data-dismiss="alert"
+                    aria-hidden="true"></button>
+            <strong>{{flash.intro}}</strong> {{{flash.message}}}
+        </div>
+    {{/if}}
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Наверх</a>
+            </p>
+            <p class="mb-1">Сайт разработан компанией &copy; Nailnet, 2022</p>
+            <p class="mb-0">Заблудились? <a href="/">На главную</a> или можете связаться с нами <a href="/process-contact">кликнув сюда</a>.</p>
+        </div>
+    </footer>
+
+    <script src="/style/bootstrap.js"></script>
+<script>
+    const btn = document.getElementById("closeButton")
+    const flash = document.getElementById("flash")
+    if (btn)
+    btn.addEventListener("click", ()=>{
+        flash.style.display = "none"
+    })
+</script>
+</body>
+</html>

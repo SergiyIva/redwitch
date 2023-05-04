@@ -1,0 +1,19 @@
+
+<div class="publicAnalyticWidget">
+    {{#each partials.publicAnalyticContext}}
+        <div class="location">
+            <h3>{{location.name}}</h3>
+            <a href="{{location.forecastUrl}}">
+                <img src="{{iconUrl}}" alt="{{weather}}" height="50" width="50">
+                {{weather}}, {{temp}}
+            </a>
+        </div>
+    {{/each}}
+    <small>
+        Источник:
+        <a href="#">
+            NailnetStatistic
+        </a>
+    </small>
+
+</div>

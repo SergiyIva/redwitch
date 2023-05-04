@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Витрина</h1>
+</div>
+<main class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col mb-3">
+        <div class="card">
+            <div class="card-header">
+                Добавить новую услугу
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Новая услуга</h5>
+                <p class="card-text">Добавить новую услугу на главную страницу, с добавлением всей необходимой информацией.</p>
+                <a href="/admin/add-card" class="btn btn-primary">Добавить</a>
+            </div>
+            <div class="card-footer text-muted">
+                Последнее добавление
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                Обновить данные услуг
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Изменение услуг</h5>
+                <p class="card-text">Изменить или удалить услугу. Также можно скрыть отображение без удаления из базы данных.</p>
+                <div class="mb-3">
+                    <label for="select" class="form-label">Выбрать услугу</label>
+                    <select id="select" class="form-select">
+                        {{#each selects}}
+                            <option id="{{position}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <button id="selectBtn" href="/admin/edit-card" class="btn btn-primary">Изменить</button>
+            </div>
+            <div class="card-footer text-muted">
+                Последнее изменение
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    const select = document.getElementById("select")
+    const btnSelect = document.getElementById("selectBtn")
+    btnSelect.addEventListener("click", (e)=>{
+        e.preventDefault()
+        window.location = "/admin/edit-card/"+select.selectedOptions.item(0).id
+        console.log(select.selectedOptions.item(0).id)
+    })
+</script>

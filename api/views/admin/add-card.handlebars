@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="/file-upload/file-upload-with-preview.min.css">
+<div class="pt-3 pb-2 mb-3 border-bottom">
+        <h2 class="h2">Добавить новую услугу</h2>
+</div>
+        <div class="py-3 text-center">
+            <p class="lead">Заполните форму ниже, для добавления нового вида услуги. Заполните все предложенные поля.</p>
+        </div>
+
+        <div class="row g-5 pb-5">
+
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Введите данные</h4>
+                <form id="form" class="needs-validation" method="post" action="/admin/add-card" role="form"
+                    enctype="multipart/form-data" >
+                    <div class="row g-3">
+                        <input type="hidden" name="_csrf" value="{{csrf}}">
+                        <input type="hidden" name="history" value="/admin/add-card">
+                        <div class="col-12">
+                            <label for="title" class="form-label">Название <span class="text-muted">(на русском)</span></label>
+                            <input name="title" type="text" class="form-control" id="title" placeholder="Название" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="slug" class="form-label">Краткое описание</label>
+                            <input name="slug" type="text" class="form-control" id="slug" placeholder="Краткое описание" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-text">Описание</span>
+                            <textarea name="describe" class="form-control" aria-label="With textarea" style="height: 80px;" required></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="price" class="form-label">Стоимость</label>
+                            <input name="price" type="text" class="form-control" id="price" placeholder="Стоимость" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="tags" class="form-label">Тэги <span class="text-muted">(через запятую)</span></label>
+                            <input name="tags" type="text" class="form-control" id="tags" placeholder="Тэги" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <input name="available" type="checkbox" class="form-check-input" id="same-address">
+                            <label class="form-check-label" for="same-address">Сделать доступным для покупки.</label>
+                        </div>
+                        <div class="custom-file-container mb-3" data-upload-id="myFirstImage"></div>
+                    </div>
+                    <hr class="my-4">
+                    <button id="button" class="w-100 btn btn-primary btn-lg" type="submit">Добавить</button>
+                </form>
+            </div>
+        </div>
+<script type="module">
+    import { FileUploadWithPreview, Events } from '/file-upload/file-upload-with-preview.esm.js';
+    const upload = new FileUploadWithPreview('myFirstImage',{
+        accept: "image/*",
+        text: {
+            browse: "Выбрать файл",
+            chooseFile: "Файл не выбран",
+            label: "Изображение",
+            selectedCount: "Файл выбран"
+        }
+    });
+    upload.inputHidden.setAttribute("name", "image")
+    window.addEventListener((Events.CLEAR_BUTTON_CLICKED), (e)=>{
+        setTimeout(()=>{
+            upload.inputVisible.innerHTML = "Файл не выбран <span class='browse-button'>Выбрать файл</span>"
+        },0)
+    })
+</script>

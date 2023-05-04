@@ -1,0 +1,217 @@
+<div class="container pt-3">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4 img-thumbnail" src="{{imgSrc}}" alt="" width="150" height="100">
+            <h2>{{title}}</h2>
+            <p class="lead">Заполните форму ниже, для оформления покупки. Также выберите любой, удобный для Вас, способ оплаты. Мы свяжемся с Вами в указанное время.</p>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Ваша заявка</span>
+                    <span class="badge bg-primary rounded-pill">1</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                        <div>
+                            <h6 class="my-0">{{title}}</h6>
+                            <small class="text-muted">{{describe}}</small>
+                        </div>
+                        <span class="text-muted">${{price}}</span>
+                    </li>
+
+                    <div id="checkPromocodeFormContainer">
+
+                    </div>
+
+
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Итого (USD)</span>
+                        <strong id="totalPrice">${{total}}</strong>
+                    </li>
+                </ul>
+
+
+
+                <form class="card p-2" role="form" id="checkPromocodeForm">
+                    <input type="hidden" name="_csrf" value="{{csrf}}">
+                    <div class="input-group">
+                        <input name="promocode" type="text" class="form-control" placeholder="Промокод" required>
+                        <button type="submit" class="btn btn-secondary">Пересчет</button>
+                    </div>
+                </form>
+                <div id="cancelPromo">
+
+                </div>
+
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Введите данные заявки</h4>
+                <form class="needs-validation" novalidate="">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="firstName" class="form-label">Имя</label>
+                            <input name="firstName" type="text" class="form-control" id="firstName" placeholder="Ваше имя" value="" required>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="lastName" class="form-label">Фамилия</label>
+                            <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Ваша фамилия" value="" required>
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="phone" class="form-label">Телефон</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">+7</span>
+                                <input type="text" class="form-control" id="phone" placeholder="999-999-99-99" required="">
+                                <div class="invalid-feedback">
+                                    Your username is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email <span class="text-muted">(Контактный)</span></label>
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="address" class="form-label">Страна</label>
+                            <input type="text" class="form-control" id="address" placeholder="Россия" required>
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="address2" class="form-label">Город</label>
+                            <input type="text" class="form-control" id="address2" placeholder="Москва" required>
+                        </div>
+
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="save-info">
+                        <label class="form-check-label" for="save-info">Сохранить контактные данные</label>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <h4 class="mb-3">Оплата</h4>
+
+                    <div class="my-3">
+                        <div class="form-check">
+                            <input id="bankcard" name="paymentMethod" type="radio" class="form-check-input" checked="" required>
+                            <label class="form-check-label" for="bankcard">Банковской картой</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="cash" name="paymentMethod" type="radio" class="form-check-input" required>
+                            <label class="form-check-label" for="cash">Наличные</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="btc" name="paymentMethod" type="radio" class="form-check-input" required>
+                            <label class="form-check-label" for="btc">Bitcoin</label>
+                        </div>
+                    </div>
+
+                    <div class="row gy-3">
+                        <div class="col-md-6">
+                            <label for="cc-name" class="form-label">Имя держателя карты</label>
+                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                            <small class="text-muted">Полное имя, как указано на карте</small>
+                            <div class="invalid-feedback">
+                                Name on card is required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="cc-number" class="form-label">Номер банковской карты</label>
+                            <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                            <div class="invalid-feedback">
+                                Credit card number is required
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="cc-expiration" class="form-label">Действительна до</label>
+                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                            <div class="invalid-feedback">
+                                Expiration date required
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="cc-cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                            <div class="invalid-feedback">
+                                Security code required
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Продолжить оформление</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+<script>
+    document.getElementById("checkPromocodeForm")
+    .addEventListener("submit", ev => {
+        ev.preventDefault()
+        const form = ev.target
+        const body = JSON.stringify({
+            _id: {{_id}},
+            _csrf: form.elements._csrf.value,
+            promocode: form.elements.promocode.value
+        })
+        const headers = {"Content-Type": "application/json"}
+        const container = document.getElementById("checkPromocodeFormContainer")
+        const cancel = document.getElementById("cancelPromo")
+        const total = document.getElementById("totalPrice")
+        fetch("/api/checkPromocode", {method: "post", body, headers})
+        .then(resp => {
+            if(resp.status < 200 || resp.status >=300)
+                throw new Error(`Запрос отклонен со статусом ${resp.status}`)
+            return resp.json()
+        })
+        .then(json => {
+            if (json.result === "success"){
+                cancel.innerHTML = ""
+                container.innerHTML = `<li class="list-group-item d-flex justify-content-between bg-light">
+                            <div class="text-success">
+                                <h6 class="my-0">Промокод</h6>
+                                <small>${json.code}</small>
+                            </div>
+                            <span class="text-success">−$${json.sale}</span>
+                        </li>`
+                total.innerText = `$${json.total}`
+            }
+            else {
+                total.innerText = `${{total}}`
+                container.innerHTML = ""
+                cancel.innerHTML = `<p class="alert-warning">Данного промокода не существует.</p>`
+            }
+        })
+        .catch(err => {
+            total.innerText = `${{total}}`
+            container.innerHTML = ""
+            cancel.innerHTML = `<b>Извините, возникли проблемы при выполнении операции.` +
+        `Пожалуйста, <a href="/new-order/{{_id}}">попробуйте еще раз</a> </b>`
+        })
+    })
+</script>

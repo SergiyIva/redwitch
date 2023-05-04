@@ -1,0 +1,41 @@
+
+
+    <section class="py-5 text-center container hero-main">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Добро пожаловать!</h1>
+                <p class="lead text-muted">Мы готовы предоставить Вам наивысший уровень креатива и технологической новизны для решения
+                    любых поставленных задач. Индивидуальный подход, приятные цены, скорость и качество выполнения проектов - это основа нашей работы! Вы можете связаться с нами,
+                либо узнать больше о нас. Ниже представлен ассортимент наших услуг.</p>
+                <p>
+                    <a href="/process-contact" class="btn btn-primary my-2">Связаться с нами</a>
+                    <a href="/about" class="btn btn-secondary my-2">О нас</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {{#each cards}}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src={{srcImg}} alt={{name}} class="bd-placeholder-img card-img-top img-card" width="100%" height="225" aria-label="Placeholder: {{name}}" />
+                        <div class="card-body">
+                            <p class="card-text">{{describe}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Обзор</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Оформить</button>
+                                </div>
+                                <small class="text-muted text-adapt">{{orderCount}} заявок</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+            </div>
+        </div>
+    </div>
